@@ -1,5 +1,6 @@
 package com.vecinet.post.domain.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -15,18 +16,13 @@ import java.util.UUID;
 public abstract class BaseEntity {
     @Id
     @NonNull
-    protected UUID id;
+    @Builder.Default
+    protected UUID id = UUID.randomUUID();
     @NonNull
-    protected Date createdAt;
+    @Builder.Default
+    protected Date createdAt = new Date();
     @NonNull
-    protected Date updatedAt;
+    @Builder.Default
+    protected Date updatedAt = new Date();
     protected Date deletedAt;
-
-    protected BaseEntity()
-    {
-        this.id = UUID.randomUUID();
-        this.createdAt = new Date();
-        this.updatedAt = new Date();
-        this.deletedAt = null;
-    }
 }
