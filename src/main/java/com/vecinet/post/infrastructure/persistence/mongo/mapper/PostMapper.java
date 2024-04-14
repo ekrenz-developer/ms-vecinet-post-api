@@ -9,7 +9,7 @@ import org.mapstruct.Named;
 
 import java.util.Date;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", implementationName = "PersistencePostMapper")
 public interface PostMapper {
     @Mapping(target = "location", ignore = true)
     @Mapping(source = "latitude", target = "latitude")
