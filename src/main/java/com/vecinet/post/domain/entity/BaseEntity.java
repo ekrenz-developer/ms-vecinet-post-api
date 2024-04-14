@@ -3,6 +3,7 @@ package com.vecinet.post.domain.entity;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@SuperBuilder
 public abstract class BaseEntity {
     @Id
     @NonNull
