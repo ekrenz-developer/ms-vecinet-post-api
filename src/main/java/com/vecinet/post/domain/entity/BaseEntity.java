@@ -27,4 +27,12 @@ public abstract class BaseEntity {
         this.updatedAt = new Date();
         this.deletedAt = null;
     }
+//
+//    protected BaseEntity(@NonNull UUID id, @NonNull Date createdAt, @NonNull Date updatedAt, Date deletedAt)
+//    {
+//        this.id = id;
+//        this.createdAt = createdAt;
+//        this.updatedAt = updatedAt;
+//        this.deletedAt = deletedAt;
+//    }
 }
