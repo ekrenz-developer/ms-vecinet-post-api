@@ -5,4 +5,8 @@ public interface EnvironmentConfigPort {
     String getMongoPassword();
     String getMongoCluster();
     String getMongoDatabase();
+    String getRabbitMQHost();
+    int getRabbitMQPort();
+    String getRabbitMQUsername();
+    String getRabbitMQPassword();
 }

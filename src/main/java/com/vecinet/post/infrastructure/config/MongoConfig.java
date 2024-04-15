@@ -4,6 +4,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.vecinet.post.domain.port.EnvironmentConfigPort;
 import org.bson.UuidRepresentation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +12,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
 public class MongoConfig {
-    private final EnvironmentConfig environmentConfig;
+    private final EnvironmentConfigPort environmentConfig;
 
-    public MongoConfig(EnvironmentConfig environmentConfig) {
+    public MongoConfig(EnvironmentConfigPort environmentConfig) {
         this.environmentConfig = environmentConfig;
     }
 
