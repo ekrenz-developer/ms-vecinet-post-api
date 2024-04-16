@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: post
+
+server:
+  port: ${SERVER_PORT}
+
+environment:
+  mongo:
+    username: ${MONGO_USERNAME}
+    password: ${MONGO_PASSWORD}
+    cluster: ${MONGO_CLUSTER}
+    database: ${MONGO_DATABASE}
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+    create_post_queue: ${RABBITMQ_CREATE_POST_QUEUE}
+    create_post_exchange: ${RABBITMQ_CREATE_POST_EXCHANGE}
+    create_post_routing_key: ${RABBITMQ_CREATE_POST_ROUTING_KEY}
