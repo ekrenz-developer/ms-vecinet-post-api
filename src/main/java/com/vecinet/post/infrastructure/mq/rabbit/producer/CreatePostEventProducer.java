@@ -1,8 +1,8 @@
 package com.vecinet.post.infrastructure.mq.rabbit.producer;
 
+import com.vecinet.post.domain.port.EnvironmentConfigPort;
 import com.vecinet.post.domain.port.EventPort;
 import com.vecinet.post.domain.port.EventProducerPort;
-import com.vecinet.post.infrastructure.mq.rabbit.config.CreatePostConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 @Qualifier("createPostEventProducer")
 public class CreatePostEventProducer implements EventProducerPort {
     private final RabbitTemplate rabbitTemplate;
+    private final EnvironmentConfigPort environmentConfig;
 
-    public CreatePostEventProducer(RabbitTemplate rabbitTemplate) {
+    public CreatePostEventProducer(RabbitTemplate rabbitTemplate, EnvironmentConfigPort environmentConfig) {
         this.rabbitTemplate = rabbitTemplate;
+        this.environmentConfig = environmentConfig;
     }
 
 //    @Override
@@ -41,6 +43,6 @@ public class CreatePostEventProducer implements EventProducerPort {
 
     @Override
     public void sendAsyncEvent(EventPort event) {
-        this.rabbitTemplate.convertAndSend(CreatePostConfig.EXCHANGE_NAME, CreatePostConfig.ROUTING_KEY, event);
+        this.rabbitTemplate.convertAndSend(this.environmentConfig.getRabbitMQCreatePostQueue(), this.environmentConfig.getRabbitMQCreatePostRoutingKey(), event);
     }
 }
