@@ -1,11 +1,9 @@
 package com.vecinet.post.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -14,7 +12,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @SuperBuilder
-public abstract class BaseEntity {
+@Jacksonized
+@ToString
+public class BaseEntity {
     @Id
     @NonNull
     @Builder.Default

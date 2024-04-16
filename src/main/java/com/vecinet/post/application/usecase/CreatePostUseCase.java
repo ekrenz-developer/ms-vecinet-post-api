@@ -4,18 +4,15 @@ import com.vecinet.post.application.dto.CreatePostCommandDto;
 import com.vecinet.post.application.event.CreatePostEvent;
 import com.vecinet.post.domain.entity.PostEntity;
 import com.vecinet.post.domain.port.EventProducerPort;
-import com.vecinet.post.domain.port.PostRespositoryPort;
 import com.vecinet.post.domain.port.UseCasePort;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CreatePostUseCase implements UseCasePort<CreatePostCommandDto, PostEntity> {
-    private final PostRespositoryPort postRepository;
     private final EventProducerPort eventProducer;
 
-    public CreatePostUseCase(PostRespositoryPort postRepository, @Qualifier("createPostEventProducer") EventProducerPort eventProducer) {
-        this.postRepository = postRepository;
+    public CreatePostUseCase(@Qualifier("createPostEventProducer") EventProducerPort eventProducer) {
         this.eventProducer = eventProducer;
     }
 
@@ -24,6 +21,6 @@ public class CreatePostUseCase implements UseCasePort<CreatePostCommandDto, Post
         PostEntity postEntity = command.getPostEntity();
         CreatePostEvent event = new CreatePostEvent(postEntity);
         this.eventProducer.sendAsyncEvent(event);
-        return this.postRepository.create(postEntity);
+        return postEntity;
     }
 }
