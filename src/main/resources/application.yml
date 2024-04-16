@@ -13,6 +13,6 @@ environment:
     port: ${RABBITMQ_PORT}
     username: ${RABBITMQ_USERNAME}
     password: ${RABBITMQ_PASSWORD}
-    createPostQueue: ${RABBITMQ_CREATE_POST_QUEUE}
-    createPostExchange: ${RABBITMQ_CREATE_POST_EXCHANGE}
-    createPostRoutingKey: ${RABBITMQ_CREATE_POST_ROUTING_KEY}
+    create_post_queue: ${RABBITMQ_CREATE_POST_QUEUE}
+    create_post_exchange: ${RABBITMQ_CREATE_POST_EXCHANGE}
+    create_post_routing_key: ${RABBITMQ_CREATE_POST_ROUTING_KEY}

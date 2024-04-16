@@ -42,15 +42,15 @@ public class EnvironmentConfig implements EnvironmentConfigPort {
     @NotBlank(message = "RabbitMQ password must not be blank")
     private String rabbitMQPassword;
 
-    @Value("${environment.rabbitmq.createPostQueue}")
+    @Value("${environment.rabbitmq.create_post_queue}")
     @NotBlank(message = "RabbitMQ createPostQueue must not be blank")
     private String rabbitMQCreatePostQueue;
 
-    @Value("${environment.rabbitmq.createPostExchange}")
+    @Value("${environment.rabbitmq.create_post_exchange}")
     @NotBlank(message = "RabbitMQ createPostExchange must not be blank")
     private String rabbitMQCreatePostExchange;
 
-    @Value("${environment.rabbitmq.createPostRoutingKey}")
+    @Value("${environment.rabbitmq.create_post_routing_key}")
     @NotBlank(message = "RabbitMQ createPostRoutingKey must not be blank")
     private String rabbitMQCreatePostRoutingKey;
 

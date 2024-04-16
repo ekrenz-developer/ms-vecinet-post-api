@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CreatePostConfig {
+public class CreatePostProducerConfig {
     private final EnvironmentConfigPort environmentConfig;
 
-    public CreatePostConfig(EnvironmentConfigPort environmentConfig) {
+    public CreatePostProducerConfig(EnvironmentConfigPort environmentConfig) {
         this.environmentConfig = environmentConfig;
     }
 
