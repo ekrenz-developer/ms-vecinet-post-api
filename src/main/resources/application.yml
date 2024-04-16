@@ -2,6 +2,9 @@ spring:
   application:
     name: post
 
+server:
+  port: ${SERVER_PORT}
+
 environment:
   mongo:
     username: ${MONGO_USERNAME}

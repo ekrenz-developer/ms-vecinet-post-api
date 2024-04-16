@@ -1,6 +1,7 @@
 package com.vecinet.post.domain.port;
 
 public interface EnvironmentConfigPort {
+    int getServerPort();
     String getMongoUsername();
     String getMongoPassword();
     String getMongoCluster();
