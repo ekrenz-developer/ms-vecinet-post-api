@@ -1,29 +1,21 @@
 package com.vecinet.post.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
 @Getter
-@Setter
 @SuperBuilder
 @Jacksonized
 @ToString(callSuper = true)
 public class PostEntity extends BaseEntity {
-    @NonNull
     @JsonProperty("username")
-    private String username;
-    @NonNull
+    private final String username;
     @JsonProperty("latitude")
-    private Double latitude;
-    @NonNull
+    private final Double latitude;
     @JsonProperty("longitude")
-    private Double longitude;
-    @NonNull
+    private final Double longitude;
     @JsonProperty("content")
-    private String content;
+    private final String content;
 }

@@ -9,8 +9,7 @@ import com.vecinet.post.infrastructure.rest.dto.PageResponseDto;
 import com.vecinet.post.infrastructure.rest.dto.PostBodyDto;
 import com.vecinet.post.infrastructure.rest.dto.PostResponseDto;
 import com.vecinet.post.infrastructure.rest.dto.PostSearchQueryParamDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -26,6 +25,7 @@ public interface PostMapper {
     @Mapping(source = "username", target = "username")
     PostEntity toEntity(PostBodyDto postDto);
 
+    @Named("toResponse")
     @Mapping(source = "latitude", target = "latitude")
     @Mapping(source = "longitude", target = "longitude")
     @Mapping(source = "content", target = "content")
@@ -51,6 +51,8 @@ public interface PostMapper {
                 .build();
     }
 
+    @Named("toResponseList")
+    @IterableMapping(qualifiedByName = "toResponse")
     List<PostResponseDto> toResponseList(List<PostEntity> postEntityList);
 
     @Mapping(source = "content", target = "content", qualifiedByName = "toResponseList")

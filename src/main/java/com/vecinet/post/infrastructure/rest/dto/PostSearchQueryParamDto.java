@@ -8,10 +8,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class PostSearchQueryParamDto extends BaseQueryParamDto {
     @NotNull
-    private String username;
+    private final String username;
     @NotNull
-    private Double latitude;
+    private final Double latitude;
     @NotNull
-    private Double longitude;
+    private final Double longitude;
     private int distanceInKm;
 }

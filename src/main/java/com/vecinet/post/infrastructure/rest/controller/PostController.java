@@ -16,8 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/posts")
 @Validated
@@ -35,7 +33,7 @@ public class PostController {
     @PostMapping()
     public ResponseEntity<PostResponseDto> create(@RequestBody PostBodyDto payload) {
         PostEntity entity = this.postMapper.toEntity(payload);
-        CreatePostCommandDto command = new CreatePostCommandDto(entity);
+        CreatePostCommandDto command = CreatePostCommandDto.builder().postEntity(entity).build();
         PostEntity createdPostEntity = this.createPostUseCase.execute(command);
         return new ResponseEntity<>(this.postMapper.toResponse(createdPostEntity), HttpStatus.CREATED);
     }
