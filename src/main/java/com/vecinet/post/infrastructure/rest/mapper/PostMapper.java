@@ -54,7 +54,7 @@ public interface PostMapper {
     List<PostResponseDto> toResponseList(List<PostEntity> postEntityList);
 
     @Mapping(source = "content", target = "content", qualifiedByName = "toResponseList")
-    @Mapping(source = "pageNumber", target = "metadata.pageNumber")
+    @Mapping(target = "metadata.pageNumber", expression = "java(pageValueObject.getPageNumber() + 1)")
     @Mapping(source = "pageSize", target = "metadata.pageSize")
     @Mapping(source = "totalElements", target = "metadata.totalElements")
     @Mapping(source = "hasPreviousPage", target = "metadata.hasPreviousPage")
