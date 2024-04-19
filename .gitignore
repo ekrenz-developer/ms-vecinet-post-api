@@ -38,3 +38,6 @@ out/
 
 ### Envs ###
 .env
+
+### OS ###
+.DS_Store

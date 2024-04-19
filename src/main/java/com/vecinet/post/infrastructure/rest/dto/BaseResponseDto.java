@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @SuperBuilder
-public abstract class BaseResponseDto {
+public class BaseResponseDto {
     @NonNull
     private String id;
     @NonNull

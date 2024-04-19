@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @Builder()
 public class PageableValueObject {
-    private static final int DEFAULT_PAGE_NUMBER = 1;
+    private static final int DEFAULT_PAGE_NUMBER = 0;
     private static final int DEFAULT_PAGE_SIZE = 15;
     private static final String DEFAULT_SORT_BY = "createdAt";
     private static final SortDirection DEFAULT_SORT_DIRECTION = SortDirection.DESC;
