@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NonNull;
 
 @Getter
-@Builder()
+@Builder
 public class LocationSearchValueObject {
     private static final int DEFAULT_DISTANCE_IN_KM = 5;
 

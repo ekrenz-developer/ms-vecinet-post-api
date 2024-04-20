@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
 @Getter
-@SuperBuilder()
+@SuperBuilder
 public class PostSearchCriteriaValueObject {
     private PageableValueObject pageable;
     private final LocationSearchValueObject locationSearch;
