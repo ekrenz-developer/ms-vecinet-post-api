@@ -15,22 +15,28 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", implementationName = "RestPostMapper")
 public interface PostMapper {
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
-    @Mapping(target = "deletedAt", ignore = true)
-    @Mapping(source = "latitude", target = "latitude")
-    @Mapping(source = "longitude", target = "longitude")
-    @Mapping(source = "content", target = "content")
-    @Mapping(source = "username", target = "username")
-    PostEntity toEntity(PostBodyDto postDto);
+    default PostEntity toEntity(PostBodyDto postDto) {
+        return PostEntity.builder()
+               .username(postDto.getUsername())
+               .latitude(postDto.getLatitude())
+               .longitude(postDto.getLongitude())
+               .content(postDto.getContent())
+               .build();
+    }
 
     @Named("toResponse")
-    @Mapping(source = "latitude", target = "latitude")
-    @Mapping(source = "longitude", target = "longitude")
-    @Mapping(source = "content", target = "content")
-    @Mapping(source = "username", target = "username")
-    PostResponseDto toResponse(PostEntity postEntity);
+    default PostResponseDto toResponse(PostEntity postEntity) {
+        return PostResponseDto.builder()
+               .id(postEntity.getId())
+               .latitude(postEntity.getLatitude())
+               .longitude(postEntity.getLongitude())
+               .content(postEntity.getContent())
+               .username(postEntity.getUsername())
+               .createdAt(postEntity.getCreatedAt())
+               .updatedAt(postEntity.getUpdatedAt())
+               .deletedAt(postEntity.getDeletedAt())
+               .build();
+    }
 
     default SearchPostQueryDto toSearchPostQueryDto(PostSearchQueryParamDto postSearchQueryParamDto) {
         LocationSearchValueObject locationSearch = LocationSearchValueObject.builder()
@@ -39,9 +45,9 @@ public interface PostMapper {
                 .longitude(postSearchQueryParamDto.getLongitude())
                 .distanceInKm(postSearchQueryParamDto.getDistanceInKm())
                 .build();
-
+        Integer page = postSearchQueryParamDto.getPage();
         PageableValueObject pageable = PageableValueObject.builder()
-                .pageNumber(postSearchQueryParamDto.getPage() - 1)
+                .pageNumber(page != null ? page -1 : null)
                 .pageSize(postSearchQueryParamDto.getSize())
                 .build();
 
@@ -55,11 +61,18 @@ public interface PostMapper {
     @IterableMapping(qualifiedByName = "toResponse")
     List<PostResponseDto> toResponseList(List<PostEntity> postEntityList);
 
-    @Mapping(source = "content", target = "content", qualifiedByName = "toResponseList")
-    @Mapping(target = "metadata.pageNumber", expression = "java(pageValueObject.getPageNumber() + 1)")
-    @Mapping(source = "pageSize", target = "metadata.pageSize")
-    @Mapping(source = "totalElements", target = "metadata.totalElements")
-    @Mapping(source = "hasPreviousPage", target = "metadata.hasPreviousPage")
-    @Mapping(source = "hasNextPage", target = "metadata.hasNextPage")
-    PageResponseDto<PostResponseDto> toPageResponseDto(PageValueObject<PostEntity> pageValueObject);
+    default PageResponseDto<PostResponseDto> toPageResponseDto(PageValueObject<PostEntity> pageValueObject) {
+        List<PostResponseDto> content = toResponseList(pageValueObject.getContent());
+        PageResponseDto.PaginationMetadata metadata = PageResponseDto.PaginationMetadata.builder()
+                .pageNumber(pageValueObject.getPageNumber() + 1)
+                .pageSize(pageValueObject.getPageSize())
+                .totalElements(pageValueObject.getTotalElements())
+                .hasPreviousPage(pageValueObject.getHasPreviousPage())
+                .hasNextPage(pageValueObject.getHasNextPage())
+                .build();
+        return PageResponseDto.<PostResponseDto>builder()
+               .content(content)
+               .metadata(metadata)
+               .build();
+    }
 }

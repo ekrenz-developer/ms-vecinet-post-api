@@ -6,12 +6,12 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-@Builder()
+@Builder
 public class PageValueObject<T> {
     private List<T> content;
     private final int pageNumber;
     private final int pageSize;
     private final int totalElements;
-    private final boolean hasPreviousPage;
-    private final boolean hasNextPage;
+    private final Boolean hasPreviousPage;
+    private final Boolean hasNextPage;
 }

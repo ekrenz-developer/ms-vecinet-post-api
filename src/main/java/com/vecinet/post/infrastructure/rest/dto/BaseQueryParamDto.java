@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class BaseQueryParamDto {
     @Min(1)
-    private int page;
+    private Integer page;
     @Max(50)
-    private int size;
+    private Integer size;
 }
