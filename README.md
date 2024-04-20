@@ -2,6 +2,10 @@
 
 Api de vecinet para crear y obtener post
 
+## Swagger UI Documentation
+> local :  http://localhost:[port]/api/ms-vecinet-post/swagger-ui/index.html
+
+
 ## Iniciar
 Para iniciar el proyecto se debe tener instalado docker.
 

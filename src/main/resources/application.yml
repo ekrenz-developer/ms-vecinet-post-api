@@ -4,6 +4,8 @@ spring:
 
 server:
   port: ${SERVER_PORT}
+  servlet:
+    context-path: /api/${spring.application.name}
 
 environment:
   mongo:
@@ -27,15 +29,6 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     displayRequestDuration: true
-  openapi:
-    info:
-      title: Vecinet API
-      description: API documentation for Vecinet Authenticator
-      version: v1.0.0
-      contact:
-        name: Vecinet Support
-        url: http://vecinet.com/support
-        email: support@vecinet.com
 
 # Eureka client
 eureka:
