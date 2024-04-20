@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Getter
-@AllArgsConstructor
+@Builder
 public class PageResponseDto<R> {
 
     @NonNull
@@ -18,18 +18,15 @@ public class PageResponseDto<R> {
     @NonNull
     private PaginationMetadata metadata;
 
-    public record PaginationMetadata(int pageNumber, int pageSize, long totalElements,
-                                     boolean hasPreviousPage, boolean hasNextPage) {
+    @Getter
+    @Builder
+    public static class PaginationMetadata {
+        private final int pageNumber;
+        private final int pageSize;
+        private final int totalElements;
+        private final boolean hasPreviousPage;
+        private final boolean hasNextPage;
     }
 
-    private boolean yatusabe(){
 
-        int numeroPrimitivo = 1;
-        Integer numeroObjeto = numeroPrimitivo;
-
-
-
-
-        return true;
-    }
 }

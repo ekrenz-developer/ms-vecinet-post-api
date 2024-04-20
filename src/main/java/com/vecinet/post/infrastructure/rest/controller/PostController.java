@@ -39,7 +39,7 @@ public class PostController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<PageResponseDto<PostResponseDto>> search(@Validated @RequestBody PostSearchQueryParamDto searchDto) {
+    public ResponseEntity<PageResponseDto<PostResponseDto>> search(@Validated @ModelAttribute  PostSearchQueryParamDto searchDto) {
         SearchPostQueryDto searchPostQueryValueObject = this.postMapper.toSearchPostQueryDto(searchDto);
         PageValueObject<PostEntity> postList = this.searchPostUseCase.execute(searchPostQueryValueObject);
         PageResponseDto<PostResponseDto> response = this.postMapper.toPageResponseDto(postList);

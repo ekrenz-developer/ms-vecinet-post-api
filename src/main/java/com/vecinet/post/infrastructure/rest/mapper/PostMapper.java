@@ -46,10 +46,13 @@ public interface PostMapper {
                 .distanceInKm(postSearchQueryParamDto.getDistanceInKm())
                 .build();
         Integer page = postSearchQueryParamDto.getPage();
-        PageableValueObject pageable = PageableValueObject.builder()
-                .pageNumber(page != null ? page -1 : null)
-                .pageSize(postSearchQueryParamDto.getSize())
-                .build();
+        Integer size = postSearchQueryParamDto.getSize();
+
+        PageableValueObject.PageableValueObjectBuilder builder = PageableValueObject.builder();
+        if ( page != null ) builder.pageNumber(page -1);
+        if ( size != null ) builder.pageSize(size);
+        PageableValueObject pageable = builder.build();
+
 
         return SearchPostQueryDto.builder()
                 .pageable(pageable)
