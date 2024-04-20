@@ -5,13 +5,12 @@ import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
 @Getter
-@SuperBuilder
 public class PostSearchQueryParamDto extends BaseQueryParamDto {
     @NotNull
-    private final String username;
+    private  String username;
     @NotNull
-    private final Double latitude;
+    private  Double latitude;
     @NotNull
-    private final Double longitude;
-    private int distanceInKm;
+    private  Double longitude;
+    private Integer distanceInKm;
 }

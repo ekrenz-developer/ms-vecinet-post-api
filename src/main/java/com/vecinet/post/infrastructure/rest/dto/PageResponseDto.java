@@ -1,23 +1,35 @@
 package com.vecinet.post.infrastructure.rest.dto;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Builder;
+import lombok.NonNull;
 
 import java.util.List;
 
-@Getter
-@Builder
-public class PageResponseDto<R> {
-    private final List<R> content;
-    private final PaginationMetadata metadata;
 
-    @Getter
-    @Builder
-    public static class PaginationMetadata {
-        private final int pageNumber;
-        private final int pageSize;
-        private final int totalElements;
-        private final boolean hasPreviousPage;
-        private final boolean hasNextPage;
+
+@Getter
+@AllArgsConstructor
+public class PageResponseDto<R> {
+
+    @NonNull
+    private List<R> content;
+    @NonNull
+    private PaginationMetadata metadata;
+
+    public record PaginationMetadata(int pageNumber, int pageSize, long totalElements,
+                                     boolean hasPreviousPage, boolean hasNextPage) {
+    }
+
+    private boolean yatusabe(){
+
+        int numeroPrimitivo = 1;
+        Integer numeroObjeto = numeroPrimitivo;
+
+
+
+
+        return true;
     }
 }
