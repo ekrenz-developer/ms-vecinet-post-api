@@ -1,17 +1,15 @@
 package com.vecinet.post.infrastructure.persistence.mongo.model;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Getter
-@Setter
-@SuperBuilder
+import java.util.UUID;
+@EqualsAndHashCode(callSuper = true)
 @Document("posts")
+@Data
 public class PostModel extends BaseModel {
     @NonNull
     private String username;

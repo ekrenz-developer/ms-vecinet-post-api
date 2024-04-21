@@ -37,11 +37,9 @@ public class PostRepository implements PostRespositoryPort {
         Point location = new Point(criteria.getLocationSearch().getLongitude(), criteria.getLocationSearch().getLatitude());
         Distance distance = new Distance(criteria.getLocationSearch().getDistanceInKm(), Metrics.KILOMETERS);
         Query query = new Query(Criteria.where(LOCATION_KEY).nearSphere(location).maxDistance(distance.getNormalizedValue()));
-
-        // Ajusta la consulta para traer un elemento más del necesario
         Pageable pageable = this.springDataPaginationUtil.toPageable(criteria.getPageable());
         query.with(pageable).limit(pageable.getPageSize() + 1);
-        List<PostModel> postModelList = this.mongoTemplate.find(query, PostModel.class);
+        List<PostModel> postModelList = this.mongoTemplate.find( query, PostModel.class);
 
         // Verificar si hay más elementos de los que se pueden mostrar en una página
         boolean hasNext = postModelList.size() > pageable.getPageSize();

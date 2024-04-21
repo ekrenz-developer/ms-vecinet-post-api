@@ -43,8 +43,10 @@ public interface PostMapper {
                 .username(postSearchQueryParamDto.getUsername())
                 .latitude(postSearchQueryParamDto.getLatitude())
                 .longitude(postSearchQueryParamDto.getLongitude())
-                .distanceInKm(postSearchQueryParamDto.getDistanceInKm())
+//                .distanceInKm(postSearchQueryParamDto.getDistanceInKm())
                 .build();
+
+
         Integer page = postSearchQueryParamDto.getPage();
         Integer size = postSearchQueryParamDto.getSize();
 
