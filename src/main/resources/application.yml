@@ -1,9 +1,11 @@
 spring:
   application:
-    name: post
+    name: ms-vecinet-post
 
 server:
   port: ${SERVER_PORT}
+  servlet:
+    context-path: /api/${spring.application.name}
 
 environment:
   mongo:
@@ -27,12 +29,12 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     displayRequestDuration: true
-  openapi:
-    info:
-      title: Vecinet API
-      description: API documentation for Vecinet Authenticator
-      version: v1.0.0
-      contact:
-        name: Vecinet Support
-        url: http://vecinet.com/support
-        email: support@vecinet.com
+
+# Eureka client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
