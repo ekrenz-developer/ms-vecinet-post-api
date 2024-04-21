@@ -1,10 +1,12 @@
 package com.vecinet.post.application.dto;
 
 import com.vecinet.post.domain.entity.PostEntity;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NonNull;
 
-@Data
+@Getter
+@Builder
 public class CreatePostCommandDto {
     @NonNull
     private PostEntity postEntity;

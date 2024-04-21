@@ -10,24 +10,20 @@ import java.util.Date;
 import java.util.UUID;
 
 @Getter
-@Setter
 @SuperBuilder
 @Jacksonized
 @ToString
 public class BaseEntity {
     @Id
-    @NonNull
     @Builder.Default
     @JsonProperty("id")
-    protected UUID id = UUID.randomUUID();
-    @NonNull
+    protected final UUID id = UUID.randomUUID();
     @Builder.Default
     @JsonProperty("createdAt")
-    protected Date createdAt = new Date();
-    @NonNull
+    protected final Date createdAt = new Date();
     @Builder.Default
     @JsonProperty("updatedAt")
-    protected Date updatedAt = new Date();
+    protected final Date updatedAt = new Date();
     @JsonProperty("deletedAt")
     protected Date deletedAt;
 }

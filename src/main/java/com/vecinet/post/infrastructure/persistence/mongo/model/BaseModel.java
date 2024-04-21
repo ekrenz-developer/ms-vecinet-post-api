@@ -1,9 +1,6 @@
 package com.vecinet.post.infrastructure.persistence.mongo.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -11,9 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.UUID;
 
-@Getter
-@Setter
-@SuperBuilder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class BaseModel {
     @Id
     @NonNull

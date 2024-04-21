@@ -1,21 +1,16 @@
 package com.vecinet.post.infrastructure.rest.dto;
 
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
-@Setter
 @SuperBuilder
-public abstract class BaseResponseDto {
-    @NonNull
-    private String id;
-    @NonNull
-    private Date createdAt;
-    @NonNull
-    private Date updatedAt;
+public class BaseResponseDto {
+    private final UUID id;
+    private final Date createdAt;
+    private final Date updatedAt;
     private Date deletedAt;
 }

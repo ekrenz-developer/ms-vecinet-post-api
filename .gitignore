@@ -39,8 +39,5 @@ out/
 ### Envs ###
 .env
 
-### Envs ###
-.env
-
 ### OS ###
 .DS_Store
