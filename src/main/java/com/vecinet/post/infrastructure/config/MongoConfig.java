@@ -33,6 +33,6 @@ public class MongoConfig {
     }
 
     private String getMongoUri() {
-        return String.format("mongodb+srv://%s:%s@%s/%s", this.environmentConfig.getMongoUsername(), this.environmentConfig.getMongoPassword(), this.environmentConfig.getMongoCluster(), this.environmentConfig.getMongoDatabase());
+        return String.format("mongodb://%s:%s@%s/%s", this.environmentConfig.getMongoUsername(), this.environmentConfig.getMongoPassword(), this.environmentConfig.getMongoCluster(), this.environmentConfig.getMongoDatabase());
     }
 }
