@@ -4,7 +4,7 @@ services:
     container_name: ms-vecinet-post
     build: .
     ports:
-      - "8082:8082"
+      - "8093:8093"
     env_file:
       - .env
     volumes:
