@@ -30,6 +30,7 @@ public class PostController {
         this.postMapper = postMapper;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping()
     public ResponseEntity<PostResponseDto> create(@RequestBody PostBodyDto payload) {
         PostEntity entity = this.postMapper.toEntity(payload);
@@ -38,6 +39,7 @@ public class PostController {
         return new ResponseEntity<>(this.postMapper.toResponse(createdPostEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/search")
     public ResponseEntity<PageResponseDto<PostResponseDto>> search(@Validated @ModelAttribute  PostSearchQueryParamDto searchDto) {
         SearchPostQueryDto searchPostQueryValueObject = this.postMapper.toSearchPostQueryDto(searchDto);
